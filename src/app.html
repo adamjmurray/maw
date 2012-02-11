@@ -7,12 +7,20 @@
   <script src="app.js"></script>
   <script src="models/model.js"></script>
   <script src="views/appView.js"></script>
+  <script src="views/widgetView.js"></script>
 </head>
 <body>
 <script type="text/x-handlebars">
 {{#view Maw.AppView}}
   {{model.data}}
+  {{view Maw.WidgetView}}
 {{/view}}
 </script>
 </body>
+
+<!-- View Components -->
+<script type="text/x-handlebars" data-template-name="widget">
+  <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" {{bindAttr fill="fill"}} />
+</script>
+
 </html>
