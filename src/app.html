@@ -2,17 +2,19 @@
 <html>
 <head>
   <meta charset='utf-8'>
+  <title>MAW</title>
   <script src="jquery-1.7.1.min.js"></script>
   <script src="ember-0.9.4.min.js"></script>
   <script src="app.js"></script>
   <script src="models/model.js"></script>
   <script src="views/appView.js"></script>
   <script src="views/widgetView.js"></script>
+  <script src="init.js"></script>
 </head>
 <body>
 <script type="text/x-handlebars">
-{{#view Maw.AppView}}
-  {{model.data}}
+{{#view Maw.AppView modelBinding="Maw.model"}}
+  <h1>{{model.data}}</h1>
   {{view Maw.WidgetView}}
 {{/view}}
 </script>
@@ -20,7 +22,7 @@
 
 <!-- View Components -->
 <script type="text/x-handlebars" data-template-name="widget">
-  <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" {{bindAttr fill="fill"}} />
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1"><title>Canvas 1</title><g><title>Layer 1</title><rect x="135.999985" y="296.88397" width="121.000046" height="79.11603" fill="white"/><rect x="135.999985" y="296.88397" width="121.000046" height="79.11603" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M 156.16666 356.3272 L 176.33336 316.7692 L 216.66673 316.7692 L 236.83342 356.3272" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></g>
 </script>
 
 </html>

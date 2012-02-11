@@ -1,4 +1,4 @@
 // place holder for top-level model
-Maw.model = Ember.Object.create({
-  data: "hello world"
+Maw.Model = Ember.Object.extend({
+  data: null
 });
