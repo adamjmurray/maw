@@ -5,17 +5,42 @@
   <title>MAW</title>
   <script src="jquery-1.7.1.min.js"></script>
   <script src="ember-0.9.4.min.js"></script>
+
   <script src="app.js"></script>
+
   <script src="models/model.js"></script>
+  <script src="models/audioNode.js"></script>
+  <script src="models/wavetableOscillator.js"></script>
+  <script src="models/sineWave.js"></script>
+  <script src="models/squareWave.js"></script>
+  <script src="models/triangleWave.js"></script>
+  <script src="models/sawWave.js"></script>
+  <script src="models/whiteNoiseWave.js"></script>
+  <script src="models/amplifier.js"></script>
+  <script src="models/output.js"></script>
+
   <script src="views/appView.js"></script>
   <script src="views/widgetView.js"></script>
+  <script src="views/audioNodeView.js"></script>
+  <script src="views/sineWaveView.js"></script>
+  <script src="views/squareWaveView.js"></script>
+  <script src="views/triangleWaveView.js"></script>
+  <script src="views/sawWaveView.js"></script>
+  <script src="views/whiteNoiseWaveView.js"></script>
+  <script src="views/amplifierView.js"></script>
+  <script src="views/outputView.js"></script>
+
   <script src="init.js"></script>
 </head>
 <body>
 <script type="text/x-handlebars">
 {{#view Maw.AppView modelBinding="Maw.model"}}
   <h1>{{model.data}}</h1>
-  {{view Maw.WidgetView}}
+  {{view Maw.SineWaveView}}
+  {{view Maw.SquareWaveView}}
+  {{view Maw.TriangleWaveView}}
+  {{view Maw.SawWaveView}}
+  {{view Maw.WhiteNoiseWaveView}}
 {{/view}}
 </script>
 </body>
@@ -23,6 +48,54 @@
 <!-- View Components -->
 <script type="text/x-handlebars" data-template-name="widget">
   <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1"><title>Canvas 1</title><g><title>Layer 1</title><rect x="135.999985" y="296.88397" width="121.000046" height="79.11603" fill="white"/><rect x="135.999985" y="296.88397" width="121.000046" height="79.11603" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M 156.16666 356.3272 L 176.33336 316.7692 L 216.66673 316.7692 L 236.83342 356.3272" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></g>
+</script>
+
+<script type="text/x-handlebars" data-template-name="sineWave">
+  <g><path fill="none" stroke="#818181" d="M1,51.582V1"/></g>
+  <g><path fill="none" stroke="#818181" d="M135.65,51.582V1"/></g>
+  <g><path fill="none" stroke="#010101" stroke-width="3" d="M1,51.582h134.65V1H1V51.582"/></g>
+  <g><path fill="none" stroke="#ED2224" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M1,26.291
+		C4.318,18.896,8.033,8.098,13.369,9.692c5.723,3.027,8.889,15.057,12.98,23.188c2.869,6.995,7.649,13.824,11.923,8.138
+		c6.595-7.92,9.764-25.321,17.02-31.035c5.369-2.9,9.288,7.867,12.606,15.255c3.349,7.657,6.861,17.912,12.213,18.021
+		c6.608-3.082,10.029-17.253,14.801-26.237c2.841-6.316,7.539-10.575,11.225-4.816c6.224,8.262,9.428,24.819,16.48,30.396
+		c5.583,3.093,9.629-8.79,13.033-16.309"/></g>
+</script>
+
+<script type="text/x-handlebars" data-template-name="squareWave">
+  <g><path fill="none" stroke="#818181" d="M1,51.261V1"/></g>
+  <g><path fill="none" stroke="#818181" d="M135.65,51.261V1"/></g>
+  <g><path fill="none" stroke="#010101" stroke-width="3" d="M1,51.261h134.65V1H1V51.261"/></g>
+  <g><path fill="none" stroke="#32B44A" stroke-width="2" d="M1,9.323h22.393v33.614h22.54V9.323h22.393v33.614h22.393
+		V9.323h22.54v33.614h22.393"/></g>
+</script>
+
+<script type="text/x-handlebars" data-template-name="triangleWave">
+  <g><path fill="none" stroke="#818181" d="M2,50.262V0"/></g>
+  <g><path fill="none" stroke="#818181" d="M136.65,50.262V0"/></g>
+  <g><path fill="none" stroke="#010101" stroke-width="3" d="M2,50.262h134.65V0H2V50.262"/></g>
+  <g><path fill="none" stroke="#3A53A4" stroke-width="2" d="M2,24.971L13.195,8.323l22.541,33.614L58.129,8.323
+		l22.393,33.614l22.54-33.614l22.393,33.614l11.196-16.967"/></g>
+</script>
+
+<script type="text/x-handlebars" data-template-name="sawWave">
+  <g><path fill="none" stroke="#818181" d="M1,51.263V1"/></g>
+  <g><path fill="none" stroke="#818181" d="M135.65,51.263V1"/></g>
+  <g><path fill="none" stroke="#010101" stroke-width="3" d="M1,51.263h134.65V1H1V51.263"/></g>
+  <g><path fill="none" stroke="#B9539F" stroke-width="2" d="M1,25.972L23.393,9.324v33.615L68.325,9.324v33.615
+		l44.933-33.615v33.615l22.393-16.968"/></g>
+</script>
+
+<script type="text/x-handlebars" data-template-name="whiteNoiseWave">
+  <g><path fill="none" stroke="#818181" d="M0,51.262V1"/></g>
+  <g><path fill="none" stroke="#818181" d="M134.65,51.262V1"/></g>
+  <g><path fill="none" stroke="#010101" stroke-width="3" d="M0,51.262h134.65V1H0V51.262"/></g>
+  <g>
+    <path fill="none" stroke="#F3F400" stroke-width="2" d="M72.25,31.25L65.29,45l-4.266-16.5L55.635,43l-0.898-31.25
+		  l-5.837,9.5l-1.347-14.5l-6.96,16l0,0l-4.939,19l-3.592-34.5L22.855,34l-4.49-16.5l-5.613,25.25L8.037,8.25L1.75,24.471"/>
+    <path fill="none" stroke="#F3F400" stroke-width="2" d="M72.25,31.25l6.022-26.32l3.691,17.315l4.663-15.221
+		  l0.777,32.805l5.05-9.979L93.62,45.07l6.022-16.789l0,0l4.274-19.936l3.108,36.198l7.964-28.066l3.886,17.314l4.856-26.499
+		  l4.081,36.198l5.439-17.013"/>
+  </g>
 </script>
 
 </html>
