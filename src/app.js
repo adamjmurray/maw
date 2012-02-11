@@ -1,0 +1,1 @@
+Maw = Ember.Application.create();
