@@ -1,5 +1,5 @@
-
 (function() {
+
   var output = Maw.Output.create();
 
   var sineWave = Maw.SineWave.create();
@@ -19,13 +19,26 @@
     }
   });
 
-  // f = Maw.LowPassFilter.create();
-  // c.connect(f);
-  // f.connect(o);
+  var lowPassFilter = Maw.LowPassFilter.create();
+  var highPassFilter = Maw.HighPassFilter.create();
+  var bandPassFilter = Maw.BandPassFilter.create();
+
+  var filterChoices = Maw.AudioNodeChoice.create({
+    nodes: [lowPassFilter, highPassFilter, bandPassFilter],
+    typeMap: {
+      lowPass: lowPassFilter,
+      highPass: highPassFilter,
+      bandPass: bandPassFilter
+    }
+  });
+
+  wavetableChoices.connect(filterChoices);
 
   Maw.setProperties({
 
     wavetableChoices: wavetableChoices,
+
+    filterChoices: filterChoices,
 
     output: output
   });
@@ -33,9 +46,9 @@
 })();
 
 function play() {
-  Maw.get('wavetableChoices').connect(Maw.get('output'));
+  Maw.get('filterChoices').connect(Maw.get('output'));
 }
 
 function stop() {
-  Maw.get('wavetableChoices').disconnect();
+  Maw.get('filterChoices').disconnect();
 }

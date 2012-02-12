@@ -7,10 +7,26 @@ Maw.AudioNode = Ember.Object.extend({
     return Maw.get('audioContext');
   }.property('Maw.audioContext'),
 
-  /**
-   * The Web Audio API AudioNode object wrapped by this class.
-   */
   node: null,
+
+  /**
+   * The input-side Web Audio API AudioNode object wrapped by this class.
+   * Some more complex nodes may wrap separate input and output nodes.
+   * By default, the output is the same as the input.
+   */
+  inputNode: function() {
+    return this.get('node');
+  }.property('node'),
+
+  /**
+   * The output-side Web Audio API AudioNode object wrapped by this class.
+   * Some more complex nodes may wrap separate input and output nodes.
+   * By default, the output is the same as the input.
+   */
+  outputNode: function() {
+    return this.get('node');
+  }.property('node'),
+
 
   outputs: null,
 
@@ -25,8 +41,9 @@ Maw.AudioNode = Ember.Object.extend({
    * Connect the output of this node to another audio node
    */
   connect: function(mawNode, outputIndex, inputIndex) {
-    var thisNode = this.get('node');
-    var destNode = mawNode.get('node');
+    var thisNode = this.get('outputNode');
+    var destNode = mawNode.get('inputNode');
+    console.log("connecting: " + thisNode + " to " + destNode);
     thisNode.connect(destNode); // , outputIndex, inputIndex); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
 
     this.get('outputs').pushObject(mawNode);
@@ -39,7 +56,7 @@ Maw.AudioNode = Ember.Object.extend({
    * @see http://updates.html5rocks.com/2012/01/Web-Audio-FAQ
    */
   reconnect: function() {
-    var thisNode = this.get('node');
+    var thisNode = this.get('outputNode');
     var connections = this.get('connections');
     var outputs = this.get('outputs');
     if(outputs) {
@@ -55,7 +72,7 @@ Maw.AudioNode = Ember.Object.extend({
    * Disconnect an output node.
    */
   disconnect: function(outputIndex) {
-    var thisNode = this.get('node');
+    var thisNode = this.get('outputNode');
     thisNode.disconnect(); // outputIndex); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
 
     var connections = this.get('connections');
