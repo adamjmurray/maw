@@ -3,10 +3,6 @@
  */
 Maw.WavetableOscillator = Maw.AudioNode.extend({
 
-  audioContext: function() {
-    return Maw.get('audioContext');
-  }.property(),
-
   wavetableSize: 2048,
 
   bufferSize: function() {
@@ -18,6 +14,8 @@ Maw.WavetableOscillator = Maw.AudioNode.extend({
   buffer: null,
 
   init: function() {
+    this._super();
+
     var audioContext = this.get('audioContext');
 
     var sampleRate = audioContext.sampleRate;
@@ -34,8 +32,9 @@ Maw.WavetableOscillator = Maw.AudioNode.extend({
       var offset = Math.round(i * step);
       sampleBuffer[i] = wavetable[offset % wavetableSize];
     }
-
     this.set("buffer", buffer);
+
+    this._createNode(audioContext, buffer);
   },
 
   _wavetable: null,
@@ -61,10 +60,13 @@ Maw.WavetableOscillator = Maw.AudioNode.extend({
     return new Array(this.get('wavetableSize'));
   },
 
-  /**
-   * the AudioBufferSourceNode
-   */
-  _source: null,
+  _createNode: function(audioContext, buffer) {
+    source = audioContext.createBufferSource();
+    source.loop = true;
+    source.buffer = buffer;
+    this.set('node', source);
+  },
+
 
   /**
    * Play the wavetable. This will play looped until stop() is called.
@@ -72,28 +74,30 @@ Maw.WavetableOscillator = Maw.AudioNode.extend({
    * @param gain scaling factor for playback gain, defaults to 1.0
    */
   play: function(rate, gain) {
-    if(!rate) rate = 1.0;
-    if(!gain) gain = 1.0;
-    var source = this.get('_source');
-    if(!source) {
-      var audioContext = this.get('audioContext');
-      source = audioContext.createBufferSource();
-      source.loop = true;
-      source.buffer = this.get('buffer');
-      source.playbackRate.value = rate;
-      //source.gain.value = gain;
-      this.set('_source', source);
-      source.connect(audioContext.destination); // TODO: support connecting to other audio nodes
-      source.noteOn(0);
-    }
+    var node = this.get('node');
+    node.playbackRate.value = (Ember.empty(rate) ? 1 : rate);
+    node.gain.value = (Ember.empty(gain) ? 1 : gain);
+    node.noteOn(0);
+//
+//    if(!source) {
+//      var audioContext = this.get('audioContext');
+//      source.connect(audioContext.destination); // TODO: support connecting to other audio nodes
+//      source.noteOn(0);
+//    }
+//    else {
+//      source.gain.value = 1;
+//    }
   },
 
   stop: function() {
-    var source = this.get('_source');
+    var source = this.get('node');
     if(source) {
-      source.noteOff(0);
-      source.disconnect();
-      this.set('_source', null);
+      source.gain.value = 0;
+
+      // old, more complicated way...
+      //source.noteOff(0);
+      //source.disconnect();
+      //this.set('node', null);
       // source will need to be re-built and added to the audio graph to play again
       // (see the "I want to play it again, but noteOn() doesn’t do anything" section @ http://updates.html5rocks.com/2012/01/Web-Audio-FAQ)
     }
