@@ -19,20 +19,27 @@
     }
   });
 
+  var noFilter = Maw.Amplifier.create(); // if we never change the gain on the amplifier, then this does nothing.
   var lowPassFilter = Maw.LowPassFilter.create();
   var highPassFilter = Maw.HighPassFilter.create();
   var bandPassFilter = Maw.BandPassFilter.create();
 
   var filterChoices = Maw.AudioNodeChoice.create({
-    nodes: [lowPassFilter, highPassFilter, bandPassFilter],
+    nodes: [noFilter, lowPassFilter, highPassFilter, bandPassFilter],
     typeMap: {
+      noFilter: noFilter,
       lowPass: lowPassFilter,
       highPass: highPassFilter,
       bandPass: bandPassFilter
     }
   });
 
+  var globalVolume = Maw.Amplifier.create();
+
+
   wavetableChoices.connect(filterChoices);
+  filterChoices.connect(globalVolume);
+
 
   Maw.setProperties({
 
@@ -40,15 +47,17 @@
 
     filterChoices: filterChoices,
 
+    globalVolume: globalVolume,
+
     output: output
   });
 
 })();
 
 function play() {
-  Maw.get('filterChoices').connect(Maw.get('output'));
+  Maw.get('globalVolume').connect(Maw.get('output'));
 }
 
 function stop() {
-  Maw.get('filterChoices').disconnect();
+  Maw.get('globalVolume').disconnect();
 }

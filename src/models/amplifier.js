@@ -6,7 +6,14 @@ Maw.Amplifier = Maw.AudioNode.extend({
   /**
    * The amount by which this amplifier scales the signal.
    */
-  value: 1.0
+  gain: 1.0,
 
-  // TODO: wrap the Web Audio API (AudioGainNode?) and scale the signal...
+  init: function() {
+    this._super();
+    var audioContext = this.get('audioContext');
+    var node = audioContext.createGainNode();
+    node.gain.value = this.get('gain');
+    this.set('node', node);
+  }
+
 });

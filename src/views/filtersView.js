@@ -4,6 +4,7 @@
 Maw.FiltersView = Ember.ContainerView.extend({
 
   childViews: [
+    Maw.NoFilterView,
     Maw.LowpassFilterView,
     Maw.HighpassFilterView,
     Maw.BandpassFilterView
@@ -20,7 +21,8 @@ Maw.FiltersView = Ember.ContainerView.extend({
 
   select: function(target) {
     var filterChoices = this.get('model');
-    if(target instanceof Maw.LowpassFilterView) filterChoices.selectByType('lowPass');
+    if(target instanceof Maw.NoFilterView) filterChoices.selectByType("noFilter");
+    else if(target instanceof Maw.LowpassFilterView) filterChoices.selectByType('lowPass');
     else if(target instanceof Maw.HighpassFilterView) filterChoices.selectByType('highPass');
     else if(target instanceof Maw.BandpassFilterView) filterChoices.selectByType('bandPass');
 
