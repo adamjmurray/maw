@@ -34,3 +34,11 @@ body {
 .deselected {
   opacity: .6;
 }
+
+#amplifier {
+  opacity: .2;
+}
+
+#amplifier.selected {
+  opacity: 1;
+}
