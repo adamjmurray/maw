@@ -23,8 +23,8 @@
 }
 
 body {
-  /* background-image: url(images/maw.png); */
-  background-repeat: repeat;
+  background-image: url(images/maw.png);
+  background-repeat: no-repeat;
 }
 
 #dropzone.over {
@@ -42,3 +42,8 @@ body {
 #amplifier.selected {
   opacity: 1;
 }
+
+#help-title {
+  text-align: left;
+}
+
