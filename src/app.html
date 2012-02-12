@@ -9,6 +9,7 @@
   <script src="app.js"></script>
 
   <link rel="stylesheet" type="text/css" href="assets/app.css" />
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css" />
 
   <script src="models/model.js"></script>
   <script src="models/audioNode.js"></script>
@@ -39,6 +40,7 @@
   <script src="init.js"></script>
 </head>
 <body>
+<div class='container'>
 <script type="text/x-handlebars">
 {{#view Maw.AppView modelBinding="Maw.model"}}
   <h1>{{model.data}}</h1>
@@ -60,6 +62,7 @@
   f.connect(o);
   //s.play();
 </script>
+</div>
 </body>
 
 <!-- View Components -->

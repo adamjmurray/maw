@@ -15,3 +15,7 @@ body {
 #dropzone.over {
   border: 2px dashed #000;
 }
+
+.deselected {
+  opacity: .6;
+}
