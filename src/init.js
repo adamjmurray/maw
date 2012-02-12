@@ -35,7 +35,7 @@
   });
 
   var globalVolume = Maw.Amplifier.create();
-  var dirtyWaveShaper = Maw.WaveShaper.create();
+  var dirtyWaveShaper = Maw.Amplifier.create({gain: 10}); // we couldn't get our waveshaper working, so just over-amplify :)  // Maw.WaveShaper.create();
   var cleanWaveShaper = Maw.Amplifier.create();
 
   var waveShaperChoices = Maw.AudioNodeChoice.create({

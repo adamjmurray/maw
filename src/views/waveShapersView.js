@@ -19,8 +19,8 @@ Maw.WaveShapersView = Ember.ContainerView.extend({
 
   select: function(target) {
     var waveShaperChoices = this.get('model');
-    if(target instanceof Maw.WaveShaperCleanView) waveShaperChoices.selectByType('lowPass');
-    else if(target instanceof Maw.WaveShaperDirtyView) waveShaperChoices.selectByType('highPass');
+    if(target instanceof Maw.WaveShaperCleanView) waveShaperChoices.selectByType('clean');
+    else if(target instanceof Maw.WaveShaperDirtyView) waveShaperChoices.selectByType('dirty');
 
     var childViews = this.get('childViews');
     childViews.forEach(function(childView) {

@@ -2,7 +2,7 @@ Maw.WaveShaper = Maw.AudioNode.extend({
 
   curveSize: 2048,
 
-  wsCurve: null,
+  bufferSize: 2048,
 
   init: function() {
     this._super();
@@ -18,6 +18,18 @@ Maw.WaveShaper = Maw.AudioNode.extend({
     this.createWSCurve(.5, this.get('curveSize'));
     var distortNode = audioContext.createWaveShaper();
     distortNode.curve = this.get('wsCurve');
+
+    // WTF, this isn't working. So we tried this instead, but it doesn't work either!
+//    var distortNode = audioContext.createJavaScriptNode(bufferSize,1,1);
+//    distortNode.onaudioprocess = function(audioProcessingEvent) {
+//      var input = audioProcessingEvent.inputBuffer.getChannelData(0);
+//      var output = audioProcessingEvent.outputBuffer.getChannelData(0);
+//      for(var i=0,len=input.length; i<len; i++) {
+//        output[i] = input[i];  // if we get pass-through working, then it should be easy to implement distortion
+//      }
+//    };
+
+
     this.set('node', distortNode);
   },
 
