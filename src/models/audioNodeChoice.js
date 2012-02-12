@@ -72,6 +72,11 @@ Maw.AudioNodeChoice = Maw.AudioNode.extend({
   setPlaybackRateOfSelectedWavetable: function(rate) {
     var node = this.getPath('selectedNode.node');
     if(node && node.playbackRate) node.playbackRate.value = rate;
+  },
+
+  setCutoffFrequencyOfSelectedFilter: function(cutoff) {
+    var node = this.getPath('selectedNode.node');
+    if(node && node.frequency) node.frequency.value = cutoff;
   }
 
 });

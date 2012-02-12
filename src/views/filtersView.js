@@ -7,7 +7,8 @@ Maw.FiltersView = Ember.ContainerView.extend({
     Maw.NoFilterView,
     Maw.LowpassFilterView,
     Maw.HighpassFilterView,
-    Maw.BandpassFilterView
+    Maw.BandpassFilterView,
+    Maw.FilterControlsView
   ],
 
   didInsertElement: function() {
