@@ -1,6 +1,9 @@
-Maw.set('model',
-  Maw.Model.create({
+Maw.setProperties({
+
+  audioContext: new webkitAudioContext(),
+
+  model: Maw.Model.create({
     data: "hello world"
   })
-);
 
+});
