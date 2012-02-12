@@ -14,6 +14,8 @@ Maw.AudioNodeChoice = Maw.AudioNode.extend({
    */
   selectedNode: null,
 
+  typeMap: null,
+
   /**
    * The underlying Web Audio API node for the selected node
    */
@@ -36,6 +38,14 @@ Maw.AudioNodeChoice = Maw.AudioNode.extend({
     if(node) node.disconnect();
     this.set('selectedNode', target);
     this.reconnect();
+  },
+
+  selectByType: function(type) {
+    var typeMap = this.get('typeMap');
+    if(typeMap) {
+      var target = typeMap[type];
+      if(target) this.select(target);
+    }
   }
 
 });

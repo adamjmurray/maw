@@ -48,7 +48,7 @@
 <div class='container'>
 <script type="text/x-handlebars">
 {{#view Maw.AppView}}
-  {{view Maw.SoundSourcesView class="row span12"}}
+  {{view Maw.SoundSourcesView class="row span12" modelBinding="Maw.wavetableChoices"}}
   {{view Maw.FiltersView class="row span12"}}
   {{view Maw.OutputView class="row span6 offset6"}}
 {{/view}}
