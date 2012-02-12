@@ -1,8 +1,4 @@
 Maw.WhiteNoiseWaveView = Maw.AudioNodeView.extend({
-
-  templateName: 'whiteNoiseWave',
-
-  width: 138,
-  height: 54
-
+  src: 'assets/images/white_noise_wave.png',
+  alt: 'white noise wave'
 });

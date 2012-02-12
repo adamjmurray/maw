@@ -1,8 +1,4 @@
 Maw.SineWaveView = Maw.AudioNodeView.extend({
-
-  templateName: 'sineWave',
-
-  width: 138,
-  height: 54
-
+  src: 'assets/images/sine_wave.png',
+  alt: 'sine wave'
 });

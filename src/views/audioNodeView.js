@@ -3,11 +3,25 @@
  */
 Maw.AudioNodeView = Ember.View.extend({
 
-  tagName: 'svg',
+  tagName: 'img',
 
-  attributeBindings: ['width', 'height'],
+  classNames: ['node'],
 
-  width: 100,
-  height: 100
+  attributeBindings: ['src', 'alt', 'draggable'],
+
+  src:'',
+  alt:'wave',
+  draggable:true,
+
+  didInsertElement: function(){
+
+    function handleDragStart() {
+      console.log('aoeu');
+      this.style.opacity = '0.4';
+    }
+
+    this.get('element').addEventListener('dragstart', handleDragStart, false);
+
+  }
 
 });

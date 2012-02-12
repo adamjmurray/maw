@@ -1,8 +1,4 @@
 Maw.SquareWaveView = Maw.AudioNodeView.extend({
-
-  templateName: 'squareWave',
-
-  width: 138,
-  height: 54
-
+  src: 'assets/images/square_wave.png',
+  alt: 'square wave'
 });

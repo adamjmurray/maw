@@ -1,0 +1,17 @@
+#nodes {
+}
+
+#dropzone {
+  background-color: gray;
+  height: 600px;
+  width: 600px;
+}
+
+body {
+  background-image: url(images/maw.png);
+  background-repeat: repeat;
+}
+
+#dropzone.over {
+  border: 2px dashed #000;
+}

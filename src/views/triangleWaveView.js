@@ -1,8 +1,4 @@
 Maw.TriangleWaveView = Maw.AudioNodeView.extend({
-
-  templateName: 'triangleWave',
-
-  width: 138,
-  height: 54
-
+  src: 'assets/images/triangle_wave.png',
+  alt: 'triangle wave'
 });
