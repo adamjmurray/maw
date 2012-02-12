@@ -13,6 +13,7 @@
   opacity: 1;
   cursor: default;
   border: 3px solid #00ffff;
+  border-style: dashed;
 }
 
 #dropzone {
@@ -22,7 +23,7 @@
 }
 
 body {
-  background-image: url(images/maw.png);
+  /* background-image: url(images/maw.png); */
   background-repeat: repeat;
 }
 

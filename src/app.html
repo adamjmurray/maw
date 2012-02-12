@@ -33,6 +33,10 @@
   <script src="views/triangleWaveView.js"></script>
   <script src="views/sawWaveView.js"></script>
   <script src="views/whiteNoiseWaveView.js"></script>
+  <script src="views/lowpassFilterView.js"></script>
+  <script src="views/highpassFilterView.js"></script>
+  <script src="views/bandpassFilterView.js"></script>
+  <script src="views/filtersView.js"></script>
   <script src="views/amplifierView.js"></script>
   <script src="views/outputView.js"></script>
   <script src="views/audioPalatteView.js"></script>
@@ -44,7 +48,9 @@
 <div class='container'>
 <script type="text/x-handlebars">
 {{#view Maw.AppView modelBinding="Maw.model"}}
-  {{view Maw.SoundSourcesView}}
+  {{view Maw.SoundSourcesView class="row span12"}}
+  {{view Maw.FiltersView class="row span12"}}
+  {{view Maw.OutputView class="row span6 offset6"}}
 {{/view}}
 
 </script>
@@ -60,13 +66,5 @@
 </body>
 
 <!-- View Components -->
-<script type="text/x-handlebars" data-template-name="soundSources">
-  {{view Maw.WhiteNoiseWaveView}}
-  {{view Maw.SineWaveView}}
-  {{view Maw.SquareWaveView}}
-  {{view Maw.TriangleWaveView}}
-  {{view Maw.SawWaveView}}
-</script>
-
 
 </html>
