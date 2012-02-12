@@ -1,6 +1,20 @@
 #nodes {
 }
 
+.node {
+  opacity: 0.2;
+  border: 3px solid transparent;
+}
+.node:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.node.selected {
+  opacity: 1;
+  cursor: default;
+  border: 3px solid #00ffff;
+}
+
 #dropzone {
   background-color: gray;
   height: 600px;
