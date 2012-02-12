@@ -43,7 +43,6 @@ Maw.AudioNode = Ember.Object.extend({
   connect: function(mawNode, outputIndex, inputIndex) {
     var thisNode = this.get('outputNode');
     var destNode = mawNode.get('inputNode');
-    console.log("connecting: " + thisNode + " to " + destNode);
     thisNode.connect(destNode); // , outputIndex, inputIndex); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
 
     this.get('outputs').pushObject(mawNode);
