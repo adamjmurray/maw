@@ -8,7 +8,8 @@ Maw.SoundSourcesView = Ember.ContainerView.extend({
     Maw.TriangleWaveView,
     Maw.SquareWaveView,
     Maw.SawWaveView,
-    Maw.WhiteNoiseWaveView
+    Maw.WhiteNoiseWaveView,
+    Maw.SoundSourceControlsView
   ],
 
   didInsertElement: function() {
