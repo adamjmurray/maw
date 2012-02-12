@@ -35,11 +35,20 @@
   });
 
   var globalVolume = Maw.Amplifier.create();
+  var dirtyWaveShaper = Maw.WaveShaper.create();
+  var cleanWaveShaper = Maw.Amplifier.create();
 
+  var waveShaperChoices = Maw.AudioNodeChoice.create({
+    nodes: [cleanWaveShaper, dirtyWaveShaper],
+    typeMap: {
+      clean: cleanWaveShaper,
+      dirty: dirtyWaveShaper
+    }
+  });
 
-  wavetableChoices.connect(filterChoices);
+  wavetableChoices.connect(waveShaperChoices);
+  waveShaperChoices.connect(filterChoices);
   filterChoices.connect(globalVolume);
-
 
   Maw.setProperties({
 
@@ -48,6 +57,7 @@
     filterChoices: filterChoices,
 
     globalVolume: globalVolume,
+    waveShaperChoices: waveShaperChoices,
 
     output: output
   });

@@ -24,6 +24,7 @@
   <script src="models/lowPassFilter.js"></script>
   <script src="models/highPassFilter.js"></script>
   <script src="models/bandPassFilter.js"></script>
+  <script src="models/waveShaper.js"></script>
   <script src="models/output.js"></script>
 
   <script src="views/appView.js"></script>
@@ -39,6 +40,9 @@
   <script src="views/highpassFilterView.js"></script>
   <script src="views/bandpassFilterView.js"></script>
   <script src="views/filtersView.js"></script>
+  <script src="views/waveShaperCleanView.js"></script>
+  <script src="views/waveShaperDirtyView.js"></script>
+  <script src="views/waveShapersView.js"></script>
   <script src="views/amplifierView.js"></script>
   <script src="views/outputView.js"></script>
   <script src="views/soundSourcesView.js"></script>
@@ -50,6 +54,7 @@
 <script type="text/x-handlebars">
 {{#view Maw.AppView}}
   {{view Maw.SoundSourcesView class="row span12" modelBinding="Maw.wavetableChoices"}}
+  {{view Maw.WaveShapersView class="row span12" modelBinding="Maw.waveShaperChoices"}}
   {{view Maw.FiltersView class="row span12"  modelBinding="Maw.filterChoices"}}
   {{view Maw.OutputView class="row span6 offset6"}}
 {{/view}}
