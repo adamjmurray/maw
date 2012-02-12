@@ -12,6 +12,7 @@
 
   <script src="models/model.js"></script>
   <script src="models/audioNode.js"></script>
+  <script src="models/audioNodeChoice.js"></script>
   <script src="models/wavetableOscillator.js"></script>
   <script src="models/sineWave.js"></script>
   <script src="models/squareWave.js"></script>
@@ -48,11 +49,21 @@
 </script>
 <script type="text/javascript">
   o = Maw.Output.create();
-  s = Maw.SawWave.create();
+  saw = Maw.SawWave.create();
+  tri = Maw.TriangleWave.create();
+  noise = Maw.WhiteNoiseWave.create();
+  c = Maw.AudioNodeChoice.create({nodes: [saw,tri,noise]});
   f = Maw.LowPassFilter.create();
-  s.connect(f);
-  f.connect(o);
-  //s.play();
+
+  saw.play();
+  tri.play();
+  noise.play();
+
+  //c.connect(f);
+  //f.connect(o);
+
+  // c.connect(o);
+
 </script>
 </body>
 

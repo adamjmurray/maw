@@ -17,7 +17,7 @@ Maw.AudioNode = Ember.Object.extend({
   connections: null,
 
   init: function() {
-    this.set('outputs', Ember.ArrayController.create());
+    this.set('outputs', []);
     this.set('connections', {} );
   },
 
@@ -29,7 +29,7 @@ Maw.AudioNode = Ember.Object.extend({
     var destNode = mawNode.get('node');
     thisNode.connect(destNode, outputIndex, inputIndex);
 
-    this.get('outputs').addObject(mawNode);
+    this.get('outputs').pushObject(mawNode);
     this.get('connections')[mawNode] = {out:outputIndex, in:inputIndex};
   },
 
@@ -42,11 +42,13 @@ Maw.AudioNode = Ember.Object.extend({
     var thisNode = this.get('node');
     var connections = this.get('connections');
     var outputs = this.get('outputs');
-    outputs.forEach(function(mawNode) {
-      var destNode = mawNode.get('node');
-      var io = connections[mawNode];
-      thisNode.connect(mawNode, io.out, io.in);
-    });
+    if(outputs) {
+      outputs.forEach(function(mawNode) {
+        var destNode = mawNode.get('node');
+        var io = connections[mawNode];
+        thisNode.connect(destNode, io.out, io.in);
+      });
+    }
   },
 
   /**
