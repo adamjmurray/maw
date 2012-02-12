@@ -1,4 +1,4 @@
-Maw.SoundSourceControlsView = Ember.View.extend({
+Maw.GlobalVolumeView = Ember.View.extend({
   title: '',
   min: 0,
   max: 100,
@@ -9,7 +9,7 @@ Maw.SoundSourceControlsView = Ember.View.extend({
   classNames: ['slider'],
 
   defaultTemplate: SC.Handlebars.compile(
-      '<div style="white-space: pre;">frequency:&nbsp;<input type="range" {{bindAttr min="min" max="max" step="step" value="value"}}></div>'
+      '<div style="white-space: pre;">volume:&nbsp;<input type="range" {{bindAttr min="min" max="max" step="step" value="value"}}></div>'
   ),
 
   change: function() {
@@ -18,8 +18,9 @@ Maw.SoundSourceControlsView = Ember.View.extend({
 
   _updateElementValue: function() {
     var value = this.$('input').val();
-    var rate = value/25 + 0.1;
-    Maw.get('wavetableChoices').setPlaybackRateOfSelectedWavetable(rate);
+    var gain = value/100;
+    var globalVolume = Maw.getPath('globalVolume.node');
+    globalVolume.gain.value = gain;
     Ember.set(this, 'value', value);
   }
 });

@@ -47,6 +47,7 @@
   <script src="views/outputView.js"></script>
   <script src="views/soundSourceControlsView.js"></script>
   <script src="views/soundSourcesView.js"></script>
+  <script src="views/globalVolumeView.js"></script>
 
   <script src="init.js"></script>
 </head>
@@ -73,6 +74,9 @@
     <h2> play/pause </h2>
   </div>
   {{view Maw.OutputView class="span4 offset8"}}
+  <div class="span4 offset8">
+    {{view Maw.GlobalVolumeView}}
+  </div>
 {{/view}}
 
 </script>
