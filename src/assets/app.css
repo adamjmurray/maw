@@ -47,3 +47,10 @@ body {
   text-align: left;
 }
 
+h2 {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline;
+}
