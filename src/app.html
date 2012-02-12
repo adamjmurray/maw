@@ -35,20 +35,14 @@
   <script src="views/amplifierView.js"></script>
   <script src="views/outputView.js"></script>
   <script src="views/audioPalatteView.js"></script>
+  <script src="views/soundSourcesView.js"></script>
 
   <script src="init.js"></script>
 </head>
 <body>
 <script type="text/x-handlebars">
 {{#view Maw.AppView modelBinding="Maw.model"}}
-  <h1>{{model.data}}</h1>
-  {{#view Maw.AudioPalatteView id="nodes"}}
-    {{view Maw.WhiteNoiseWaveView}}
-    {{view Maw.SineWaveView}}
-    {{view Maw.SquareWaveView}}
-    {{view Maw.TriangleWaveView}}
-    {{view Maw.SawWaveView}}
-  {{/view}}
+  {{view Maw.SoundSourcesView}}
 {{/view}}
 
 </script>
@@ -63,5 +57,13 @@
 </body>
 
 <!-- View Components -->
+<script type="text/x-handlebars" data-template-name="soundSources">
+  {{view Maw.WhiteNoiseWaveView}}
+  {{view Maw.SineWaveView}}
+  {{view Maw.SquareWaveView}}
+  {{view Maw.TriangleWaveView}}
+  {{view Maw.SawWaveView}}
+</script>
+
 
 </html>
