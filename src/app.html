@@ -53,10 +53,22 @@
 <div class='container'>
 <script type="text/x-handlebars">
 {{#view Maw.AppView}}
+  <div class="span12">
+  <h2> sound sauce </h2>
+  </div>
   {{view Maw.SoundSourcesView class="row span12" modelBinding="Maw.wavetableChoices"}}
+  <div class="span12">
+  <h2> wave shapers </h2>
+  </div>
   {{view Maw.WaveShapersView class="row span12" modelBinding="Maw.waveShaperChoices"}}
+  <div class="span12">
+  <h2> filters </h2>
+  </div>
   {{view Maw.FiltersView class="row span12"  modelBinding="Maw.filterChoices"}}
-  {{view Maw.OutputView class="row span6 offset6"}}
+  <div class="span4 offset8">
+  <h2> play/pause </h2>
+  </div>
+  {{view Maw.OutputView class="span4 offset8"}}
 {{/view}}
 
 </script>
