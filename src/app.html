@@ -19,6 +19,9 @@
   <script src="models/sawWave.js"></script>
   <script src="models/whiteNoiseWave.js"></script>
   <script src="models/amplifier.js"></script>
+  <script src="models/filter.js"></script>
+  <script src="models/lowPassFilter.js"></script>
+  <script src="models/highPassFilter.js"></script>
   <script src="models/output.js"></script>
 
   <script src="views/appView.js"></script>
@@ -48,6 +51,14 @@
   {{/view}}
 {{/view}}
 
+</script>
+<script type="text/javascript">
+  o = Maw.Output.create();
+  s = Maw.SawWave.create();
+  f = Maw.LowPassFilter.create();
+  s.connect(f);
+  f.connect(o);
+  //s.play();
 </script>
 </body>
 
