@@ -21,10 +21,18 @@ Maw.SoundSourcesView = Ember.ContainerView.extend({
   },
 
   select: function(target) {
+    var audioNodeChoices = this.get('model');
+    if(target instanceof Maw.SineWaveView) audioNodeChoices.selectByType('sine');
+    else if(target instanceof Maw.TriangleWaveView) audioNodeChoices.selectByType('triangle');
+    else if(target instanceof Maw.SquareWaveView) audioNodeChoices.selectByType('square');
+    else if(target instanceof Maw.SawWaveView) audioNodeChoices.selectByType('saw');
+    else if(target instanceof Maw.WhiteNoiseWaveView) audioNodeChoices.selectByType('noise');
+
     var childViews = this.get('childViews');
     childViews.forEach(function(childView) {
       childView.set('selected', (childView===target));
     });
+
   }
 
 });
