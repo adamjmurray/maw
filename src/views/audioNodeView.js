@@ -9,7 +9,7 @@ Maw.AudioNodeView = Ember.View.extend({
 
   classNameBindings: ['selected'],
 
-  attributeBindings: ['src', 'alt', 'draggable'],
+  attributeBindings: ['src', 'alt'],
 
   src:'',
   alt:'wave',
