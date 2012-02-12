@@ -5,7 +5,7 @@ Maw.AudioNodeView = Ember.View.extend({
 
   tagName: 'img',
 
-  classNames: ['node'],
+  classNames: ['node' , 'span1', 'offset1'],
 
   classNameBindings: ['selected'],
 
