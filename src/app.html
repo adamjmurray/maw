@@ -11,7 +11,6 @@
   <link rel="stylesheet" type="text/css" href="assets/app.css" />
   <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css" />
 
-  <script src="models/model.js"></script>
   <script src="models/audioNode.js"></script>
   <script src="models/audioNodeChoice.js"></script>
   <script src="models/wavetableOscillator.js"></script>
@@ -53,24 +52,6 @@
   {{view Maw.FiltersView class="row span12"}}
   {{view Maw.OutputView class="row span6 offset6"}}
 {{/view}}
-
-</script>
-<script type="text/javascript">
-  o = Maw.Output.create();
-  saw = Maw.SawWave.create();
-  tri = Maw.TriangleWave.create();
-  noise = Maw.WhiteNoiseWave.create();
-  c = Maw.AudioNodeChoice.create({nodes: [saw,tri,noise]});
-  f = Maw.LowPassFilter.create();
-
-  saw.play();
-  tri.play();
-  noise.play();
-
-  //c.connect(f);
-  //f.connect(o);
-
-  // c.connect(o);
 
 </script>
 </div>

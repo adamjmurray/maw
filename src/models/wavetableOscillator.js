@@ -35,6 +35,8 @@ Maw.WavetableOscillator = Maw.AudioNode.extend({
     this.set("buffer", buffer);
 
     this._createNode(audioContext, buffer);
+
+    this.play();
   },
 
   _wavetable: null,
