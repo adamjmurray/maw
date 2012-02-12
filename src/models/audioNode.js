@@ -27,7 +27,7 @@ Maw.AudioNode = Ember.Object.extend({
   connect: function(mawNode, outputIndex, inputIndex) {
     var thisNode = this.get('node');
     var destNode = mawNode.get('node');
-    thisNode.connect(destNode, outputIndex, inputIndex);
+    thisNode.connect(destNode); // , outputIndex, inputIndex); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
 
     this.get('outputs').pushObject(mawNode);
     this.get('connections')[mawNode] = {out:outputIndex, in:inputIndex};
@@ -46,7 +46,7 @@ Maw.AudioNode = Ember.Object.extend({
       outputs.forEach(function(mawNode) {
         var destNode = mawNode.get('node');
         var io = connections[mawNode];
-        thisNode.connect(destNode, io.out, io.in);
+        thisNode.connect(destNode); // , io.out, io.in); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
       });
     }
   },
@@ -56,7 +56,7 @@ Maw.AudioNode = Ember.Object.extend({
    */
   disconnect: function(outputIndex) {
     var thisNode = this.get('node');
-    thisNode.disconnect(outputIndex);
+    thisNode.disconnect(); // outputIndex); TODO: look into supporting indexes. Note you can't pass in undefined index values in Chrome 17, it causes an exception
 
     var connections = this.get('connections');
     var outputs = this.get('outputs');
