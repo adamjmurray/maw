@@ -2,7 +2,7 @@ Maw.Filter = Maw.AudioNode.extend({
 
   filter: null,
 
-  defaultFrequency: 440,
+  defaultFrequency: 3000,
 
   defaultQ: 1,
 
